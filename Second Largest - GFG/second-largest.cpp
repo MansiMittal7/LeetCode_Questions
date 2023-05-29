@@ -15,13 +15,18 @@ public:
 	    int ans=-1;
 	   //  vector<int> v;
 	    for(int i=0; i<n; i++){
-               maxe=max(maxe,arr[i]);
+	        if(arr[i]>maxe){
+	          ans=maxe;
+	          maxe=arr[i];
+	        }
+	        else if(arr[i]>ans && arr[i]<maxe) ans=arr[i];
+            //   maxe=max(maxe,arr[i]);
             //   maxindex=i;
            }
            
-        for(int i=0; i<n; i++){
-            if(arr[i]>ans && arr[i]!=maxe) ans=arr[i];
-        }
+        // for(int i=0; i<n; i++){
+        //     if(arr[i]>ans && arr[i]!=maxe) ans=arr[i];
+        // }
         
         return ans;
 	    }
