@@ -4,17 +4,16 @@ public:
 		if (nums.size() == 0 || nums.size() == 1)
 		return nums.size();
         
-
-        set<int> st;
-        for(int i=0;i<nums.size(); i++){
-            st.insert(nums[i]);
+        int i=0;
+        
+        for(int j=1;j<nums.size(); j++){
+            if(nums[i]!=nums[j]){
+                nums[i+1]=nums[j];
+                i++;
+            }
         }
-        int index=0; 
-        for(auto it:st){
-            nums[index]=it;
-            index++;
-        }
-         return index;  
+        int a=i+1;
+        return a; 
           }
     
     
@@ -47,3 +46,14 @@ public:
         
         // cout<<a<<','<<ans<<','<<v;
         // for(int i=0; i<v.size(); i++) return v[i];
+//code
+ // set<int> st;
+ //        for(int i=0;i<nums.size(); i++){
+ //            st.insert(nums[i]);
+ //        }
+ //        int index=0; 
+ //        for(auto it:st){
+ //            nums[index]=it;
+ //            index++;
+ //        }
+ //         return index;
