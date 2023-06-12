@@ -15,12 +15,12 @@ public:
 	    for(int i=0; i<n; i++){
 	        if(arr[i]==(i+1)) v.push_back(i+1);
 	    }
-	    if(v.size()==0) return{ };
+	   // if(v.size()==0) return{ };
 	   // cout<<" ";
-	    else{
+	   // else{
 	       // for(int i=0; i<v.size(); i++) 
 	        return {v};
-	    }
+	   // }
 	   
 	    
 	}
