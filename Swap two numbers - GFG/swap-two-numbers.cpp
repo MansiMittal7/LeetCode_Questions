@@ -11,15 +11,21 @@ class Solution{
 public:
     pair<int, int> get(int a, int b){
         //complete the function here
-        int c=0;
-        c=a;
-        a=b;
-        b=c;
-        
-        
+        a=a^b;
+        b=a^b;
+        a=a^b;
         return {a,b};
+        
     }
 };
+
+//brute force
+        // int c=0;
+        // c=a;
+        // a=b;
+        // b=c;
+        // return {a,b};
+
 
 //{ Driver Code Starts.
 
