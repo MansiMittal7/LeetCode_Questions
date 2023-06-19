@@ -1,19 +1,43 @@
 class Solution {
-public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        int n=nums.size();
-        int subset_count=(1<<n) ;
-            //2 raised to n
-        vector<vector<int>>ans;
-        for(int mask=0; mask<subset_count;mask++){
-            vector<int> subset;
-            for(int i=0; i<n; i++){
-                 if( (mask&(1<<i))!=0 )
-                subset.push_back(nums[i]);
-            }
-             ans.push_back(subset);
+    
+    private:
+    void solve(vector<int>& nums,vector<int> output, int index,vector<vector<int>>& ans ){
+        if(index>=nums.size()){
+            
+            ans.push_back(output);
+            return;
         }
         
-        return ans;
+        solve(nums,output,index+1,ans);
+            
+            int element=nums[index];
+            output.push_back(element);
+        solve(nums, output, index+1,ans);
+    }
+    
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+    vector<vector<int>> ans;
+        vector<int> output;
+      int  index=0;
+        solve(nums,output,index,ans);{
+            return ans;
+        }
     }
 };
+ 
+// to check code-- 
+    
+    //vector<vector<int>> ans;
+//      int n=nums.size();
+//         for(int i=0 ; i<((1<<n)-1);i++){
+//             // string ans="";
+//             vector<int>v;
+//             for(int j=0;i<(n-1); j++){
+//                 if(nums[j]&(1<<j)) v.push_back(nums[j]);
+//             }
+//             ans.push_back(v);
+//         }
+//         return ans;
+        
+//     }
