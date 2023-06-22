@@ -19,8 +19,14 @@ vector<int> sortVector(vector<int>v)
 }
 vector<int> reverseVector(vector<int>v)
 {
+     vector<int> temp;
      //Your code here. Use library function
-     reverse(v.begin(),v.end());
+     for(int i=v.size()-1; i>=0;i--){
+      temp.push_back(v[i]);   
+     }
+    //  reverse(v.begin(),v.end());
+    for(int i=0;i<temp.size();i++) v[i]=temp[i];
+  
     return v;
 }
 
