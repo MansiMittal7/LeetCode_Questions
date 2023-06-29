@@ -11,22 +11,13 @@ using namespace std;
 class Solution{
 public:
     int maxInstance(string s){
-       map<int, int>m;
-    for(int i=0;i<s.length();i++){
-        if(s[i]=='b' || s[i]=='a' ||s[i]=='l' ||s[i]=='o' ||s[i]=='n'){
-            m[s[i]]++;
+        map<char,int> mp;
+        for(int i=0; i<s.size(); i++){
+            mp[s[i]]++;
         }
-    }
-    int mini=INT_MAX;
-    for(auto it=m.begin(); it!=m.end(); it++){
-        if(it->first=='l' || it->first=='o'){
-            mini=min(mini, (it->second)/2);
-        }else{
-            mini=min(mini, it->second);
-        }
-    }
-    return mini;
-        
+        int ans=INT_MAX;
+        ans=min(mp['b'],min(mp['a'],min(mp['n'],min(mp['l']/2, mp['o']/2))));
+        return ans;
     }
 };
 
