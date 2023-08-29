@@ -4,7 +4,7 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
+<pre><span style="font-size:18px"><strong>Input:
 </strong>N = 5
 Arr[] = {5, 1, 2, 3, 4}
 <strong>Output:</strong> 1
@@ -12,16 +12,16 @@ Arr[] = {5, 1, 2, 3, 4}
 The original sorted array is 1 2 3 4 5. 
 We can see that the array was rotated 
 1 times to the right.
-</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</span></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
+<pre><span style="font-size:18px"><strong>Input:
 </strong>N = 5
 Arr[] = {1, 2, 3, 4, 5}
 <strong>Output:</strong> 0
 <strong>Explanation:</strong>&nbsp;The given array is not rotated.
-</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</span></pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
 Complete the function <strong>findKRotation()</strong>&nbsp;which takes array <strong>arr</strong> and size&nbsp;<strong>n</strong>,&nbsp;as input parameters&nbsp;and returns an integer representing the answer.&nbsp;You don't to print answer or take inputs.</span></p>
