@@ -70,13 +70,14 @@ int sumOfLastN_Nodes(struct Node* head, int n)
 {
       // Code here
       Node* temp=head;
-      int count=1;
-      while(temp->next!=NULL)
+      int count=0;
+      while(temp!=NULL)
       {
           count++;
           temp=temp->next;
           
       }
+     
       int ans=count-n;
       int sum=0;
       int i=0;
