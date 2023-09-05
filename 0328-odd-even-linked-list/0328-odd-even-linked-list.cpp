@@ -13,10 +13,19 @@ public:
     ListNode* oddEvenList(ListNode* head) {
         
         
-        if(!head){
-           return head;
-       }
-        if(head->next==nullptr ) return head;
+       //  if(!head){  //empty list
+       //     return head;
+       // }
+       //  if(head->next==nullptr ) return head; //single element in list 
+        
+        if (head == nullptr)
+            return head;
+        
+        if (head->next == nullptr)
+            return head;
+        
+        if (head->next->next == nullptr)
+            return head;
         
         ListNode* odd=head;
         ListNode* even=odd->next;
