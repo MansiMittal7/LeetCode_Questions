@@ -87,7 +87,35 @@ struct Node
 
 class Solution
 {
+      // detect whether the loop exist
+
+      Node* detectLoop(Node* head){
+        Node* slow=head;
+        Node* fast=head;
+        
+        while(slow!=NULL && fast!=NULL && fast->next!=NULL){
+            slow = slow -> next;
+            fast = fast -> next->next;
+             if(slow==fast)
+                return slow;
+             
+          }
+         return NULL;
+    }
     
+    //Find where the loop starts
+    Node* getStartingNodeOfLoop(Node* head){
+        Node* intersetion=detectLoop(head);
+        if(intersetion == NULL)//kya pataa loop hi na ho in that case return null
+            return NULL;
+            
+        Node* slow=head;
+        while(slow != intersetion){
+            slow = slow->next;
+            intersetion = intersetion->next;
+        }
+         return slow;
+    }
     
     public:
     //Function to remove a loop in the linked list.
@@ -96,22 +124,39 @@ class Solution
         // code here
         // just remove the loop without losing any nodes
         
-        //brute force  sc=O(n)
-        Node*temp=head;
-        Node*prev;
+        // Optimal approach with sc=O(1)
+         // removing loop main function
+    
+        if(head==NULL)
+            return ;
+            
+            Node* startNodeOfLoop= getStartingNodeOfLoop(head);
+             if(startNodeOfLoop == NULL)
+                return;
+            
+            Node* curr=startNodeOfLoop;
+            while(curr->next !=startNodeOfLoop){
+                curr=curr->next;
+            }
+            curr->next=NULL;
         
-        map<Node*,int>m;
-        while(temp!=NULL)
-        {
-            m[temp]++;
-            if(m[temp]==2) break;
-            prev=temp;
-            temp=temp->next;
-        }
-        if(temp==NULL) return ;
-        prev->next=NULL;
     }
 };
+
+//brute force  sc=O(n)
+        // Node*temp=head;
+        // Node*prev;
+        
+        // map<Node*,int>m;
+        // while(temp!=NULL)
+        // {
+        //     m[temp]++;
+        //     if(m[temp]==2) break;
+        //     prev=temp;
+        //     temp=temp->next;
+        // }
+        // if(temp==NULL) return ;
+        // prev->next=NULL;
 
 //{ Driver Code Starts.
 
