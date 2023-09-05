@@ -90,10 +90,10 @@ int countNodesinLoop(struct Node *head)
         slow=slow->next;
         
         if(fast==slow){ //loop is present 
-            Node *temp=fast;
-            while(temp->next!=slow){
+            // Node *temp=fast;
+            while(fast->next!=slow){
                 count++;
-                temp=temp->next;
+                fast=fast->next;
             }
             return count;
         }
