@@ -24,8 +24,8 @@ public:
         if (head->next == nullptr)
             return head;
         
-        if (head->next->next == nullptr)
-            return head;
+        // if (head->next->next == nullptr)
+        //     return head;
         
         ListNode* odd=head;
         ListNode* even=odd->next;
