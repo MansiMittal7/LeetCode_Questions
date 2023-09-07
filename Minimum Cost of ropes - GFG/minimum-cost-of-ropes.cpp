@@ -10,20 +10,26 @@ class Solution
     //Function to return the minimum cost of connecting the ropes.
     long long minCost(long long arr[], long long n) {
         // Your code here
-        priority_queue<long long,vector<long long>,greater<long long>>pq;
-         for(long long i=0;i<n;i++){
-            pq.push(arr[i]);
-        }
-        long long ans=0;
-        while(pq.size()!=1){
-            long long t1=pq.top();
+        priority_queue<long long, vector<long long>, greater<long long> > pq;
+        
+        for(int i=0; i<n;i++) pq.push(arr[i]);
+        
+        long long cost=0;
+        
+        while(pq.size()>1){
+            long long first=pq.top();
             pq.pop();
-            long long t2=pq.top();
+            
+            long long second=pq.top();
             pq.pop();
-            ans=ans+t1+t2;
-            pq.push(t1+t2);
+            
+            long long mergedLength = first+second;
+            cost=cost+mergedLength;
+            
+            pq.push(mergedLength);
         }
-        return ans;
+        
+        return cost; 
     }
 };
 
