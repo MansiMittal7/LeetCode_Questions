@@ -61,12 +61,16 @@ public:
         
         temp=head;
         
-        int i=0;
+        //int i=0;
+        // while(temp!=NULL){
+        //     temp->data=arr[i];
+        //     temp=temp->next;
+        //     i++;
+        // }
         
-        while(temp!=NULL){
-            temp->data=arr[i];
-            temp=temp->next;
-            i++;
+        for(int i = 0; i < arr.size(); i++){
+            temp->data = arr[i];
+            temp = temp->next;
         }
         
         return head;
