@@ -8,13 +8,13 @@ class Solution {
   
   bool dfs(int node, int parent, int vis[], vector<int> adj[]){
      vis[node] = 1;
-    for(auto adjacentNode: adj[node]){
-        if(!vis[adjacentNode]){
-            if(dfs(adjacentNode, node, vis, adj)==true){
+    for(auto it: adj[node]){
+        if(!vis[it]){
+            if(dfs(it, node, vis, adj)==true){
                 return true;
             }
         }
-        else if(adjacentNode!=parent) return true;
+        else if(it!=parent) return true;
     }
     return false;
   }
