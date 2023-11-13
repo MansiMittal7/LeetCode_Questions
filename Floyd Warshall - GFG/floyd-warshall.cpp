@@ -12,63 +12,57 @@ class Solution {
 	void shortest_distance(vector<vector<int>>&matrix){
 	    // Code here
 	    
-	   // int n= matrix.size();
-	   // for(int i=0; i<n;i++){
-	   //     for(int j=0; j<n; j++){
-	   //         if(matrix[i][j]==-1){
-	   //             matrix[i][j]=1e9;
-	   //         }
+	    int n= matrix.size();
+	    for(int i=0; i<n;i++){
+	        for(int j=0; j<n; j++){
+	            if(matrix[i][j]==-1){
+	                matrix[i][j]=1e9;
+	            }
 	            
-	   //         if(i==j) matrix[i][j]==0;
-	   //     }
-	   // }
+	            if(i==j) matrix[i][j]=0;
+	        }
+	    }
 	    
-	   // for(int k=0; k<n;k++){
-	   //     for(int i=0; i<n;i++){
-	   //         for(int j=0; j<n; j++){
-	   //             matrix[i][j]==min(matrix[i][j] , (matrix[i][k]+matrix[k][j]));
-	   //         }
-	   //     }
-	   // }
+	    for(int k=0; k<n;k++){
+	        for(int i=0; i<n;i++){
+	            for(int j=0; j<n; j++){
+	                matrix[i][j]=min(matrix[i][j] , (matrix[i][k]+matrix[k][j]));
+	            }
+	        }
+	    }
 	    
-	   // for(int i=0; i<n;i++){
-	   //     for(int j=0; j<n; j++){
-	   //         if(matrix[i][j]==1e9){
-	   //             matrix[i][j]=-1;
-	   //         }
-	   //     }
-	   // }
+	    for(int i=0; i<n;i++){
+	        for(int j=0; j<n; j++){
+	            if(matrix[i][j]==1e9){
+	                matrix[i][j]=-1;
+	            }
+	        }
+	    }
 	   
-	   int n=matrix.size();
-        // Simple make the -1 to infinity and diagonal zeroes because shortest path for itself is zero:
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(matrix[i][j]==-1) matrix[i][j]=1e9;
-                if(i==j) matrix[i][j]=0;
-            }
-        }   
+	   //int n=matrix.size();
+    // // Simple make the -1 to infinity and diagonal zeroes because shortest path for itself is zero:
+    //     for(int i=0;i<n;i++){
+    //         for(int j=0;j<n;j++){
+    //             if(matrix[i][j]==-1) matrix[i][j]=1e9;
+    //             if(i==j) matrix[i][j]=0;
+    //         }
+    //     }   
             
-       // Main logic of floyd Warshall Algorithm:
-        for(int via=0;via<n;via++){
-            for(int i=0;i<n;i++){
-                for(int j=0;j<n;j++){
-                    matrix[i][j]=min(matrix[i][j], (matrix[i][via]+matrix[via][j]));
-                }
-            }
-        }
-                
-        // This code is used to check the negative cylce present in the matrix or not:
-       // for(int i=0;i<n;i++){
-       //     if(matrix[i][i]<0) cout<<"Negative cylce present.";
-       // }
+    //   // Main logic of floyd Warshall Algorithm:
+    //     for(int via=0;via<n;via++){
+    //         for(int i=0;i<n;i++){
+    //             for(int j=0;j<n;j++){
+    //                 matrix[i][j]=min(matrix[i][j], (matrix[i][via]+matrix[via][j]));
+    //             }
+    //         }
+    //     }
         
-        
-       // Simple converting the remaing infinity in to -1 because according to question:
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(matrix[i][j]==1e9) matrix[i][j]=-1;
-            }
-        }
+    //   // Simple converting the remaing infinity in to -1 because according to question:
+    //     for(int i=0;i<n;i++){
+    //         for(int j=0;j<n;j++){
+    //             if(matrix[i][j]==1e9) matrix[i][j]=-1;
+    //         }
+    //     }
         
 
 
