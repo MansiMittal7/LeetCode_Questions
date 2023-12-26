@@ -1,27 +1,29 @@
 class Solution {
-//tabulation methond 
+//space optimization
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         int mod=(2e9+7);
         int n=obstacleGrid.size(); //nXm matrix
         int m=obstacleGrid[0].size();
         
-        int dp[n][m];
+        vector<int> prev(m,0);
         for(int i=0; i<n;i++){
+            vector<int> curr(m,0);
             for(int j=0;j<m;j++){
-                if(obstacleGrid[i][j]==1) dp[i][j]=0;
-                else if(i==0 && j==0) dp[i][j]=1;
+                if(obstacleGrid[i][j]==1) curr[j]=0;
+                else if(i==0 && j==0) curr[j]=1;
                 
                 else{
                     int up=0, left=0;
-                    if(i>0) up=dp[i-1][j];
-                    if(j>0) left=dp[i][j-1];
+                    if(i>0) up=prev[j];
+                    if(j>0) left=curr[j-1];
                     
-                    dp[i][j]=(up+left)%mod;
+                    curr [j]=(up+left)%mod;
                 }
             }
+            prev=curr;
         }
-        return dp[n-1][m-1];
+        return prev[m-1];
     }
 };
 
@@ -71,3 +73,28 @@ public:
         
 //         return f(n-1,m-1,obstacleGrid,dp);
 //     }
+
+
+//tabulation methond 
+// public:
+//     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+//         int mod=(2e9+7);
+//         int n=obstacleGrid.size(); //nXm matrix
+//         int m=obstacleGrid[0].size();
+        
+//         int dp[n][m];
+//         for(int i=0; i<n;i++){
+//             for(int j=0;j<m;j++){
+//                 if(obstacleGrid[i][j]==1) dp[i][j]=0;
+//                 else if(i==0 && j==0) dp[i][j]=1;
+                
+//                 else{
+//                     int up=0, left=0;
+//                     if(i>0) up=dp[i-1][j];
+//                     if(j>0) left=dp[i][j-1];
+                    
+//                     dp[i][j]=(up+left)%mod;
+//                 }
+//             }
+//         }
+//         return dp[n-1][m-1];
