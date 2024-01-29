@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    //TC= O(n), SC=O(n)
      int diameterOfBinaryTree(TreeNode* root) {
         
         
