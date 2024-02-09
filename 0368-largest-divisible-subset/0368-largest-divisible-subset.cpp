@@ -32,3 +32,6 @@ public:
         return temp;
     }
 };
+
+//TC=NN + n
+//sc=N
