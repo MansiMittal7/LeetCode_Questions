@@ -1,18 +1,17 @@
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
-      // approach with one vectors-
-        int n=nums.size();
-        vector<int> v1;
-        for(int i=0; i<n; i++){
-         if(nums[i]!=0) v1.push_back(nums[i]);
-        }
-        
-        int nz=v1.size();
-        
-        for (int i = 0; i < nz; i++) nums[i] = v1[i];
-
-        for (int i = nz; i < n; i++) nums[i] = 0;
+      int n=nums.size();
+      for(int j=0;j<n-1;j++){
+          if(nums[j]==0){
+            for(int i=j+1;i<n;i++){
+               if(nums[i]!=0){
+                   swap(nums[i],nums[j]);
+                   j++;
+               } 
+            }  
+          }  
+      }
     
     }
 };
@@ -38,6 +37,18 @@ public:
 
 
 
+// approach with one vectors-
+//         int n=nums.size();
+//         vector<int> v1;
+//         for(int i=0; i<n; i++){
+//          if(nums[i]!=0) v1.push_back(nums[i]);
+//         }
+        
+//         int nz=v1.size();
+        
+//         for (int i = 0; i < nz; i++) nums[i] = v1[i];
+
+//         for (int i = nz; i < n; i++) nums[i] = 0;
 
 
 
