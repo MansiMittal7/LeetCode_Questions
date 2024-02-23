@@ -40,3 +40,5 @@ public:
             
     }
 };
+
+//TC of dijkstra with priority queue is ElogV, but as we are not using priority q here, the complexity becomes just O(E) where E=flights.size() i.e number of edges
