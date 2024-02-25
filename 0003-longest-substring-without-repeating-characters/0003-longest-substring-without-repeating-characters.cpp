@@ -9,10 +9,10 @@ public:
     //all unique char are needed so size of current window== unique char count size of map
     while(j<n){
         mp[s[j]]++;
-        if(mp.size()>j-i+1){
-            j++;
-        }
-        else if(mp.size()==j-i+1){
+        // if(mp.size()>j-i+1){
+        //     j++;
+        // }
+         if(mp.size()==j-i+1){
             ans=max(ans,j-i+1);
             j++;
         }
