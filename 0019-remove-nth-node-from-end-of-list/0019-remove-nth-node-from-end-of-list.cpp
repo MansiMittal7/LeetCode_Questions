@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-       //optimised approach 
+       //optimised approach  tc- O(N), sc=O(1)
         ListNode* fast = head;
         ListNode* slow = head;
         for(int i=0;i<n;++i){
