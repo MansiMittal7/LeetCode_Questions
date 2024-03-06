@@ -18,7 +18,7 @@ public:
         ListNode* slow=head;
         ListNode* fast=head;
         
-        while(fast->next !=NULL && fast->next->next !=NULL){
+        while(fast->next !=NULL && fast->next->next !=NULL){ //NULL linked list or single element list cant                                                             have any cycle 
             slow=slow->next;
             fast=fast->next->next;
             
