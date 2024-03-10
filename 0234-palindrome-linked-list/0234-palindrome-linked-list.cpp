@@ -13,24 +13,74 @@ class Solution {
    
 
 public:
+    
+     ListNode* reverse(ListNode* head){
+         
+         if(head==NULL || head->next==NULL) return head;
+         ListNode* newHead=reverse(head->next);
+         ListNode* front=head->next;
+         front->next=head;
+         head->next=NULL;
+         
+         return newHead;
+     }
+    
     bool isPalindrome(ListNode* head) {
         
+        //optimal approach- TC=O(N) tc- O(1)
     
-         
-       vector<int>v;
-        while(head){
-            v.push_back(head->val);
-            head=head->next;
-        }
-        for(int i=0; i<v.size()/2; i++){
-            if(v[i]!=v[v.size()-1-i]){
+ 
+        if(head==NULL || head->next==NULL) return true; //it empty or single element ll
+        
+         ListNode* slow=head;//getting mid
+	     ListNode* fast = head->next;
+	
+	     while(fast->next!=NULL && fast->next->next!=NULL){
+	      slow = slow->next;
+	      fast=fast->next->next;
+	     } 
+          
+        ListNode*newHead= reverse(slow->next);  //reversing the list after mid;joining reversed list after            middle again
+        
+        //comparing both the halves 
+        ListNode* first=head;
+        ListNode* second=newHead;
+        
+        while(second!=NULL){
+            if(first->val!=second->val) {
+                reverse(newHead);
                 return false;
             }
+            first=first->next;
+            second=second->next;
+                
         }
         
-        return true;
+        //repeat reverse step tp make ll again same as it was given to us (opyional step)
+         reverse(newHead);
+         return true;
+
+
     }
 };
+
+
+//brute force- copy the content of ll into a vector then check wether vector formed is a pallindrome or         not   TC=O(N)  SC= O(N)
+//      vector<int>v;
+//         while(head){
+//             v.push_back(head->val);
+//             head=head->next;
+//         }
+//         for(int i=0; i<v.size()/2; i++){
+//             if(v[i]!=v[v.size()-1-i]){
+//                 return false;
+//             }
+//         }
+        
+//         return true;
+
+
+
 
   //optimal approach- TC=O(N) tc- O(1)
 
@@ -86,38 +136,3 @@ public:
         
 //          return true;
 
-
-
-
-//brute force- copy the content of ll into a vector then check wether vector formed is a pallindrome or         not   TC=O(N)  SC= O(N)
-
-//  bool checkPali(vector<int> v){
-//         return checkPali(v);
-//         int s=0, l=v.size()-1;
-        
-//         while(s<=l){
-//             if(v[s]!=v[l]) return false;
-            
-//             s++;
-//             l--;
-//         }
-//         return true;
-//     }
-
-// public:
-//     bool isPalindrome(ListNode* head) {
-        
-    
-         
-//       vector<int> v;
-//        ListNode* temp=head; 
-        
-//         while(temp!=NULL){
-//             v.push_back(temp->val);
-//             temp=temp->next;
-//         }
-        
-        
-//        return checkPali(v);
-//     }
-// };
