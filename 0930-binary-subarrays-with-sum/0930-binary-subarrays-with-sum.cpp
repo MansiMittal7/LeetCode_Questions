@@ -5,25 +5,25 @@ private:
         int n = nums.size();
         
         int res = 0, i = 0,j=0;
-        for (int j = 0; j < n; j++) {
-            g -= nums[j];
-            while (g < 0){
-               g += nums[i];
-               i++;  
-            }
+//         for (int j = 0; j < n; j++) {
+//             g -= nums[j];
+//             while (g < 0){
+//                g += nums[i];
+//                i++;  
+//             }
                
-            res += j - i + 1;
-        }
+//             res += j - i + 1;
+//         }
         
-        // while(i<j){
-        //     g-=nums[j];
-        //     while(g<0){
-        //         g+=nums[i];
-        //         i++;
-        //     }
-        //         res+=j-i+1;
-        //     j++;
-        // }
+        while(j<n){
+            g-=nums[j];
+            while(g<0){
+                g+=nums[i];
+                i++;
+            }
+                res+=j-i+1;
+            j++;
+        }
         return res;
     }
     
