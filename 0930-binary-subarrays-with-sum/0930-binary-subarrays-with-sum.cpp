@@ -2,26 +2,26 @@ class Solution {
 private:
     int atMost(vector<int>& nums, int g) {
         if (g < 0) return 0;
-        int n = nums.size();
         
-        int res = 0, i = 0,j=0;
-//         for (int j = 0; j < n; j++) {
-//             g -= nums[j];
-//             while (g < 0){
-//                g += nums[i];
-//                i++;  
-//             }
-               
-//             res += j - i + 1;
-//         }
+        int res = 0, i = 0,j=0,sum=0,n = nums.size();
+        
+        // while(j<n){
+        //     g-=nums[j];
+        //     while(g<0){
+        //         g+=nums[i];
+        //         i++;
+        //     }
+        //         res+=j-i+1;
+        //     j++;
+        // }
         
         while(j<n){
-            g-=nums[j];
-            while(g<0){
-                g+=nums[i];
+            sum+=nums[j];
+            while(sum>g && i<=j){
+                sum-=nums[i];
                 i++;
             }
-                res+=j-i+1;
+            res+=j-i+1;
             j++;
         }
         return res;
