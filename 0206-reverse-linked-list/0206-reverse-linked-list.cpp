@@ -31,8 +31,7 @@ public:
         ListNode* prev = NULL;
         reverse(head,curr,prev);
         return head;
-        
-       
+             
     }
 };
 
