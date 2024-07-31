@@ -11,21 +11,43 @@
  */
 class Solution {
 public:
-    vector <int> ans; 
-    void inOrder(TreeNode* root){
-        
-        if(root==NULL) return; 
-        
-        inOrder(root->left);
-        ans.push_back(root->val);
-        inOrder(root->right);
-        
-    }
-    
+    //iterative
     vector<int> inorderTraversal(TreeNode* root) {
         
-        inOrder(root);
-        return ans;
-        
+        stack<TreeNode*> st;
+        TreeNode* node = root;
+        vector<int> inorder;
+        while(true){
+            if(node!=nullptr){
+                st.push(node);
+                node=node->left;
+            } else{
+                if(st.empty()==true) break;
+                node=st.top();
+                st.pop();
+                inorder.push_back(node->val);
+                node=node->right;
+            }
+        }
+        return inorder;
     }
 };
+
+
+
+//reccursive solution 
+//public:
+//     vector <int> ans; 
+//     void inOrder(TreeNode* root){
+//         if(root==NULL) return; 
+        
+//         inOrder(root->left);
+//         ans.push_back(root->val);
+//         inOrder(root->right);
+//     }
+//     vector<int> inorderTraversal(TreeNode* root) {
+        
+//         inOrder(root);
+//         return ans;
+        
+//     }
