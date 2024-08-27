@@ -1,7 +1,7 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-     
+    //variable sliding window 
     int n=s.size();
     int i=0, j=0, ans=0;
     map<char,int> mp;
@@ -9,10 +9,11 @@ public:
     //all unique char are needed so size of current window== unique char count size of map
     while(j<n){
         mp[s[j]]++;
-        // if(mp.size()>j-i+1){
+        // if(mp.size()>j-i+1){//this conditions ccan never occur 
         //     j++;
         // }
-         if(mp.size()==j-i+1){
+        
+        if(mp.size()==j-i+1){ //all unique chars present in map 
             ans=max(ans,j-i+1);
             j++;
         }
@@ -44,5 +45,4 @@ public:
 //             len=max(len,right-left+1);
 //             right++;
 //         }
-
 //         return len;
